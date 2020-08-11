@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "webperf-by-codebuild" {
   name                = "exec-webperf-by-codebuild-${random_id.webperf.hex}"
-  schedule_expression = "cron(0 * * * ? *)"
+  schedule_expression = "cron(0 18 * * ? *)"
 }
 
 resource "aws_cloudwatch_event_target" "webperf-by-codebuild" {

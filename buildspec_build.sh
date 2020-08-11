@@ -20,6 +20,7 @@ function exec_lighthouse () {
     --output json \
     --output html \
     --output-path "./outputs/$DOMAIN/$DEVICE/$CATEGORY/output"
+    --quiet
 
   jq '. + {metrics: .audits.metrics} | del(.i18n, .audits)' -c \
     "outputs/$DOMAIN/$DEVICE/$CATEGORY/output.report.json" \

@@ -1,5 +1,8 @@
-TAG := aws/codebuild/standard:2.0
+TAG := aws/codebuild/standard:4.0
 yml := buildspec.yml
+
+.PHONY: terraform-init terraform-apply terraform-destroy codebuild-local-clone codebuild-local-build \
+		codebuild-local-pull codebuild-local-init test
 
 terraform-init:
 	cd terraform && \
@@ -14,11 +17,11 @@ terraform-destroy:
 	terraform destroy
 
 codebuild-local-clone:
-	git clone --depth 1 https://github.com/aws/aws-codebuild-docker-images.git -b 19.11.26 docker-images
+	git clone --depth 1 https://github.com/aws/aws-codebuild-docker-images.git docker-images
 
 codebuild-local-build:
 	cd docker-images && \
-		cd ubuntu/standard/2.0 && \
+		cd ubuntu/standard/4.0 && \
 		docker build -t $(TAG) .
 
 codebuild-local-pull:

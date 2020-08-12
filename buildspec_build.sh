@@ -16,11 +16,12 @@ function exec_lighthouse () {
   lighthouse "$TARGET_URL" \
     --config-path "./lighthouse-$DEVICE-config.js" \
     --port=9222 \
-    --chrome-flags="--headless" \
+    --chrome-flags="--headless --lang=ja" \
     --output json \
     --output html \
     --output-path "./outputs/$DOMAIN/$DEVICE/$CATEGORY/output" \
-    --quiet
+    --quiet \
+    --locale ja
 
   jq '. + {metrics: .audits.metrics} | del(.i18n, .audits)' -c \
     "outputs/$DOMAIN/$DEVICE/$CATEGORY/output.report.json" \

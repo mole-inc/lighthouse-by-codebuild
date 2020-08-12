@@ -19,7 +19,7 @@ function exec_lighthouse () {
     --chrome-flags="--headless" \
     --output json \
     --output html \
-    --output-path "./outputs/$DOMAIN/$DEVICE/$CATEGORY/output"
+    --output-path "./outputs/$DOMAIN/$DEVICE/$CATEGORY/output" \
     --quiet
 
   jq '. + {metrics: .audits.metrics} | del(.i18n, .audits)' -c \

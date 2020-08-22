@@ -12,6 +12,10 @@ phases:
       - npm i -g lighthouse@6.2.0
   pre_build:
     commands:
+      - /usr/sbin/update-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+      - export LC_ALL="ja_JP.UTF-8"
+      - locale-gen ja_JP.UTF-8
+      - dpkg-reconfigure locales
       - OUTPUT_DATE="$(date +'%Y/%m/%d/%H/%M')"
       - YEAR="$(echo $OUTPUT_DATE | awk -F/ '{print $1}')"
       - MONTH="$(echo $OUTPUT_DATE | awk -F/ '{print $2}')"
